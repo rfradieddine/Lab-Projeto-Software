@@ -20,18 +20,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "rfradieddine"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;rfradieddine&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/rfradieddine/roteiro01.git",
-    "accountId": "52d19dfd-2389-4423-a122-d449ce208028"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/rfradieddine/roteiro01.git&quot;,
+    &quot;accountId&quot;: &quot;52d19dfd-2389-4423-a122-d449ce208028&quot;
   }
-}]]></component>
+}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -62,7 +62,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "F:/Desenvolvimento/Estudo/Faculdade/Lab dev de software/roteiro01/Código",
+    "last_opened_file_path": "F:/Desenvolvimento/Estudo/Faculdade/Lab dev de software/roteiro01",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -72,6 +72,19 @@
   }
 }]]></component>
   <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="roteiro01" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="roteiro01" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Roteiro01Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="roteiro01" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.labdessoft.roteiro01.Roteiro01Application" />
@@ -101,6 +114,7 @@
       <workItem from="1712531266701" duration="23000" />
       <workItem from="1712531365611" duration="810000" />
       <workItem from="1712532389217" duration="184000" />
+      <workItem from="1714450158595" duration="44000" />
     </task>
     <servers />
   </component>
