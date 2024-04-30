@@ -62,7 +62,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "F:/Desenvolvimento/Estudo/Faculdade/Lab dev de software/roteiro01",
+    "last_opened_file_path": "F:/Desenvolvimento/Estudo/Faculdade/Lab dev de software/roteiro01/codigo/backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -115,6 +115,7 @@
       <workItem from="1712531365611" duration="810000" />
       <workItem from="1712532389217" duration="184000" />
       <workItem from="1714450158595" duration="44000" />
+      <workItem from="1714450452036" duration="18000" />
     </task>
     <servers />
   </component>
