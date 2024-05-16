@@ -1,5 +1,9 @@
 package com.labdessoft.roteiro01.entity;
 
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -11,6 +15,27 @@ public class Todo {
     private String nome;
     private String descricao;
     private boolean realizado;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    private Date dataPrevista;
+    private String prioridade;
+    
+
+    public Date getDataPrevista() {
+        return dataPrevista;
+    }
+
+    public void setDataPrevista(Date dataPrevista) {
+        this.dataPrevista = dataPrevista;
+    }
+
+    public String getPrioridade() {
+        return prioridade;
+    }
+
+    public void setPrioridade(String prioridade) {
+        this.prioridade = prioridade;
+    }
 
     public Long getId() {
         return id;
