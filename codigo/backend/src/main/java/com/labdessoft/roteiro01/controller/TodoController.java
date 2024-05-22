@@ -9,29 +9,29 @@ import java.util.List;
 @RestController
 @RequestMapping("/todos")
 public class TodoController {
-    private TodoService todoService;
+    private final TodoService todoService;
 
     public TodoController(TodoService todoService) {
         this.todoService = todoService;
     }
 
     @PostMapping
-    List<Todo> create (@RequestBody Todo todo){
+    public List<Todo> create(@RequestBody Todo todo) {
         return todoService.create(todo);
     }
 
     @GetMapping
-    List<Todo> list(){
+    public List<Todo> list() {
         return todoService.list();
     }
 
     @PutMapping
-    List<Todo> update(@RequestBody Todo todo){
+    public List<Todo> update(@RequestBody Todo todo) {
         return todoService.update(todo);
     }
 
     @DeleteMapping("{id}")
-    List<Todo> delete(@PathVariable("id") Long id){
+    public List<Todo> delete(@PathVariable("id") Long id) {
         return todoService.delete(id);
     }
 }
