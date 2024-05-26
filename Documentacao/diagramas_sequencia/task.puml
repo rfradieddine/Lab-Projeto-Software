@@ -1,0 +1,57 @@
+@startuml
+package com.labdessoft.roteiro01.entity {
+    class Todo {
+        Long id
+        String nome
+        String descricao
+        boolean realizado
+        Date dataPrevista
+        Priority prioridade
+        --
+        +getId() : Long
+        +setId(id : Long)
+        +getNome() : String
+        +setNome(nome : String)
+        +getDescricao() : String
+        +setDescricao(descricao : String)
+        +isRealizado() : boolean
+        +setRealizado(realizado : boolean)
+        +getDataPrevista() : Date
+        +setDataPrevista(dataPrevista : Date)
+        +getPrioridade() : Priority
+        +setPrioridade(prioridade : Priority)
+    }
+
+    enum Priority {
+        BAIXA
+        MEDIA
+        ALTA
+    }
+}
+
+package com.labdessoft.roteiro01.service {
+    class TodoService {
+        -TodoRepository todoRepository
+        --
+        +create(todo : Todo) : List<Todo>
+        +list() : List<Todo>
+        +update(todo : Todo) : List<Todo>
+        +delete(id : Long) : List<Todo>
+    }
+}
+
+package com.labdessoft.roteiro01.controller {
+    class TodoController {
+        -TodoService todoService
+        --
+        +create(todo : Todo) : List<Todo>
+        +list() : List<Todo>
+        +update(todo : Todo) : List<Todo>
+        +delete(id : Long) : List<Todo>
+    }
+}
+
+TodoService --> TodoRepository
+TodoController --> TodoService
+TodoService --> Todo
+@enduml
