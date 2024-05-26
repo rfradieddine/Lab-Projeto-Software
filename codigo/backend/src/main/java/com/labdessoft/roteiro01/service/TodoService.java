@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class TodoService {
-    private final TodoRepository todoRepository;
+    private TodoRepository todoRepository;
 
     public TodoService(TodoRepository todoRepository) {
         this.todoRepository = todoRepository;
@@ -34,4 +34,5 @@ public class TodoService {
         todoRepository.deleteById(id);
         return list();
     }
+
 }
