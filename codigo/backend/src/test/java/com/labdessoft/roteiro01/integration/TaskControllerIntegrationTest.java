@@ -10,7 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Date;
-import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -32,16 +31,9 @@ public class TaskControllerIntegrationTest {
 
     @Test
     void testCreateTodo() throws Exception {
-        Todo todo = new Todo();
-        todo.setNome("Teste");
-        todo.setDescricao("Descrição do teste");
-        todo.setRealizado(false);
-        todo.setDataPrevista(new Date());
-        todo.setPrioridade("Alta");
-
         mockMvc.perform(post("/todos")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"nome\":\"Teste\",\"descricao\":\"Descrição do teste\",\"realizado\":false,\"dataPrevista\":\"01/01/2024\",\"prioridade\":\"Alta\"}"))
+                        .content("{\"nome\":\"Teste\",\"descricao\":\"Descrição do teste\",\"realizado\":false,\"dataPrevista\":\"01/01/2024\",\"prioridade\":\"ALTA\"}"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].nome").value("Teste"));
     }
@@ -53,7 +45,7 @@ public class TaskControllerIntegrationTest {
         todo.setDescricao("Descrição do teste");
         todo.setRealizado(false);
         todo.setDataPrevista(new Date());
-        todo.setPrioridade("Alta");
+        todo.setPrioridade(Todo.Priority.ALTA);
         todoRepository.save(todo);
 
         mockMvc.perform(get("/todos")
@@ -69,11 +61,11 @@ public class TaskControllerIntegrationTest {
         todo.setDescricao("Descrição do teste");
         todo.setRealizado(false);
         todo.setDataPrevista(new Date());
-        todo.setPrioridade("Alta");
+        todo.setPrioridade(Todo.Priority.ALTA);
         todo = todoRepository.save(todo);
 
         String updatedTodoJson = String.format(
-                "{\"id\":%d,\"nome\":\"Teste Atualizado\",\"descricao\":\"Descrição atualizada\",\"realizado\":true,\"dataPrevista\":\"01/01/2024\",\"prioridade\":\"Baixa\"}",
+                "{\"id\":%d,\"nome\":\"Teste Atualizado\",\"descricao\":\"Descrição atualizada\",\"realizado\":true,\"dataPrevista\":\"01/01/2024\",\"prioridade\":\"BAIXA\"}",
                 todo.getId()
         );
 
@@ -91,7 +83,7 @@ public class TaskControllerIntegrationTest {
         todo.setDescricao("Descrição do teste");
         todo.setRealizado(false);
         todo.setDataPrevista(new Date());
-        todo.setPrioridade("Alta");
+        todo.setPrioridade(Todo.Priority.ALTA);
         todo = todoRepository.save(todo);
 
         mockMvc.perform(delete("/todos/{id}", todo.getId())
