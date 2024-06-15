@@ -39,9 +39,7 @@ public class TodoController {
 
     @GetMapping("/health")
     public ResponseEntity<String> healthCheck() {
-        // Verifica a saúde da aplicação
-        boolean isHealthy = todoService.isHealthy(); // Método isHealthy deve ser implementado no seu TodoService
-
+        boolean isHealthy = todoService.isHealthy();
         if (isHealthy) {
             return ResponseEntity.ok("Aplicação está operacional");
         } else {

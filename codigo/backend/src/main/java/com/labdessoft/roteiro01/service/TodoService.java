@@ -36,15 +36,11 @@ public class TodoService {
     }
 
     public boolean isHealthy() {
-        // Aqui você pode adicionar a lógica para verificar a saúde da aplicação
-        // Por exemplo, verificar se o banco de dados está acessível, se os serviços externos estão funcionando, etc.
 
         try {
-            // Verifica se o banco de dados está acessível
             List<Todo> todos = todoRepository.findAll();
-            return true; // Se conseguir recuperar todos os registros, consideramos a aplicação saudável
+            return true;
         } catch (Exception e) {
-            // Em caso de erro, a aplicação é considerada não saudável
             return false;
         }
     }
