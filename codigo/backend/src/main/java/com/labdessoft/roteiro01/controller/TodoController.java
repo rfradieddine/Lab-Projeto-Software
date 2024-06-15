@@ -2,6 +2,8 @@ package com.labdessoft.roteiro01.controller;
 
 import com.labdessoft.roteiro01.entity.Todo;
 import com.labdessoft.roteiro01.service.TodoService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,4 +36,17 @@ public class TodoController {
     List<Todo> delete(@PathVariable("id") Long id){
         return todoService.delete(id);
     }
+
+    @GetMapping("/health")
+    public ResponseEntity<String> healthCheck() {
+        // Verifica a saúde da aplicação
+        boolean isHealthy = todoService.isHealthy(); // Método isHealthy deve ser implementado no seu TodoService
+
+        if (isHealthy) {
+            return ResponseEntity.ok("Aplicação está operacional");
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Aplicação com problemas");
+        }
+    }
+
 }
