@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/todos'; // URL base da sua API
+const API_URL = 'https://lab-projeto-software-1.onrender.com/todos'; // URL base da sua API
 
 // Função para criar um novo Todo
 const createTodo = async (todo) => {

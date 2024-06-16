@@ -2,14 +2,15 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { useEffect, useState } from 'react';
 import { getTodos, createTodo, updateTodo, deleteTodo } from '../../service/TarefasService';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export default function DataTable() {
   const [lista, setLista] = useState([]);
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'title', headerName: 'Tarefas', width: 200 },
-    { field: 'description', headerName: 'Descrição', width: 200 },
+    { field: 'nome', headerName: 'Tarefas', width: 200 },
+    { field: 'descricao', headerName: 'Descrição', width: 200 },
     {
       field: 'completed',
       headerName: 'Status',
@@ -21,21 +22,16 @@ export default function DataTable() {
       headerName: 'Ações',
       description: 'Ações para o Todo',
       sortable: false,
-      width: 160,
+      width: 180,
       renderCell: (params) => (
-        <strong>
+        
           <button
             onClick={() => handleDelete(params.row.id)}
             style={{ marginRight: 16 }}
           >
-            Deletar
+            <DeleteForeverIcon />
           </button>
-          <button
-            onClick={() => handleUpdate(params.row)}
-          >
-            Atualizar
-          </button>
-        </strong>
+        
       ),
     },
   ];
@@ -74,7 +70,7 @@ export default function DataTable() {
 
   return (
     <div style={{ height: '60vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <div style={{ height: 400, width: '80%' }}>
+      <div style={{ height: 400, width: '52%' }}>
         <DataGrid
           rows={lista}
           columns={columns}
