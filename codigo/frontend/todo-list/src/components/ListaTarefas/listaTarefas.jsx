@@ -2,7 +2,11 @@ import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import { useEffect, useState } from 'react';
 import { getTodos, createTodo, updateTodo, deleteTodo } from '../../service/TarefasService';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ButtonCreate from '../ButtonCreate/ButtonCreate';
+import Button from '@mui/material/Button';
+import CheckIcon from '@mui/icons-material/Check';
+import ClearIcon from '@mui/icons-material/Clear'; // Ícone para tarefa não realizada
 
 export default function DataTable() {
   const [lista, setLista] = useState([]);
@@ -11,27 +15,28 @@ export default function DataTable() {
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'nome', headerName: 'Tarefas', width: 200 },
     { field: 'descricao', headerName: 'Descrição', width: 200 },
-    {
-      field: 'completed',
-      headerName: 'Status',
-      type: 'boolean',
-      width: 100,
-    },
+    { field: 'dataPrevista', headerName: 'Data', width: 200 },
     {
       field: 'actions',
       headerName: 'Ações',
       description: 'Ações para o Todo',
       sortable: false,
-      width: 180,
+      width: 400,
       renderCell: (params) => (
-        
-          <button
+        <>
+          <Button
             onClick={() => handleDelete(params.row.id)}
             style={{ marginRight: 16 }}
+            color='error'
           >
-            <DeleteForeverIcon />
-          </button>
-        
+            <DeleteIcon />
+          </Button>
+          <Button
+            onClick={() => handleUpdate(params.row)}
+          >
+            {params.row.completed ? "Marcar como não feito" : "Marcar como feito"}
+          </Button>
+        </>
       ),
     },
   ];
@@ -39,7 +44,11 @@ export default function DataTable() {
   const fetchData = async () => {
     try {
       const response = await getTodos();
-      setLista(response);
+      const updatedData = response.map(todo => ({
+        ...todo,
+        completed: todo.completed ? <CheckIcon /> : <ClearIcon />
+      }));
+      setLista(updatedData);
     } catch (error) {
       console.error('Erro ao buscar os todos:', error);
     }
@@ -70,7 +79,8 @@ export default function DataTable() {
 
   return (
     <div style={{ height: '60vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <div style={{ height: 400, width: '52%' }}>
+      <div style={{ height: 400, width: '%' }}>
+        <ButtonCreate />
         <DataGrid
           rows={lista}
           columns={columns}

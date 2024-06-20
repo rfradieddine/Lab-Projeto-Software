@@ -1,11 +1,9 @@
 'use client'
 
-import Image from "next/image";
-import styles from "./page.module.css";
-import ListaTarefas from "../components/ListaTarefas/listaTarefas";
+import ListaTarefas from "../../components/ListaTarefas/listaTarefas";
 import { Typography } from "@mui/material";
 import '@fontsource/roboto/700.css';
-
+import ButtonCreate from "../../components/ButtonCreate/ButtonCreate";
 
 export default function Home() {
   return (
@@ -13,7 +11,7 @@ export default function Home() {
     <div style={{height: '20vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}} >
       <Typography variant="h4">Todo List</Typography>
     </div>
-    <ListaTarefas />
+    <ListaTarefas />    
 </>
   );
 }
