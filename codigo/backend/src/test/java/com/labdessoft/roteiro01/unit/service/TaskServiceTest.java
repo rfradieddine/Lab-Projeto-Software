@@ -45,7 +45,7 @@ class TodoServiceTest {
         when(todoRepository.save(todo1)).thenReturn(todo1);
         when(todoRepository.findAll(Sort.by("nome").ascending())).thenReturn(Arrays.asList(todo1, todo2));
 
-        List<Todo> todos = todoService.create(todo1);
+        List<Todo> todos = (List<Todo>) todoService.create(todo1);
 
         assertEquals(2, todos.size());
         verify(todoRepository, times(1)).save(todo1);
@@ -67,7 +67,7 @@ class TodoServiceTest {
         when(todoRepository.save(todo1)).thenReturn(todo1);
         when(todoRepository.findAll(Sort.by("nome").ascending())).thenReturn(Arrays.asList(todo1, todo2));
 
-        List<Todo> todos = todoService.update(todo1);
+        List<Todo> todos = (List<Todo>) todoService.update(todo1);
 
         assertEquals(2, todos.size());
         verify(todoRepository, times(1)).save(todo1);

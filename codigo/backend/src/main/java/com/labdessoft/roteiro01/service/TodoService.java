@@ -59,14 +59,16 @@ public class TodoService {
      * Deletes a Todo item by id.
      *
      * @param id the id of the Todo item to delete
+     * @return
      * @throws ResourceNotFoundException if the Todo item does not exist
      */
-    public void delete(Long id) {
+    public List<Todo> delete(Long id) {
         try {
             todoRepository.deleteById(id);
         } catch (EmptyResultDataAccessException e) {
             throw new ResourceNotFoundException("Todo item not found with id: " + id);
         }
+        return null;
     }
 
     /**

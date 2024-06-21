@@ -49,7 +49,7 @@ class TodoControllerTest {
 
     @Test
     void create() throws Exception {
-        when(todoService.create(any(Todo.class))).thenReturn(Arrays.asList(todo1, todo2));
+        when(todoService.create(any(Todo.class))).thenReturn((Todo) Arrays.asList(todo1, todo2));
 
         mockMvc.perform(post("/todos")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -71,7 +71,7 @@ class TodoControllerTest {
 
     @Test
     void update() throws Exception {
-        when(todoService.update(any(Todo.class))).thenReturn(Arrays.asList(todo1, todo2));
+        when(todoService.update(any(Todo.class))).thenReturn((Todo) Arrays.asList(todo1, todo2));
 
         mockMvc.perform(put("/todos")
                         .contentType(MediaType.APPLICATION_JSON)
