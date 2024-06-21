@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/todos")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://lab-projeto-software-5ykwn6cqn.vercel.app/todo")
 public class TodoController {
 
     private final TodoService todoService;
