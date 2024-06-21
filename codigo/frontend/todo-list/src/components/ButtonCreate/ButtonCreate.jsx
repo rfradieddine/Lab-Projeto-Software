@@ -30,7 +30,7 @@ export default function NestedModal() {
   const [nome, setNome] = React.useState("");
   const [descricao, setDescricao] = React.useState("");
   const [prioridade, setPrioridade] = React.useState(null);
-  const [data, setData] = React.useState("");
+  const [dataPrevista, setData] = React.useState("");
   const [realizado, setRealizado] = React.useState(false);
 
   const handleOpen = () => {
@@ -47,12 +47,13 @@ export default function NestedModal() {
       return;
     }
 
+
     const todo = {
       nome,
       descricao,
       realizado,
       prioridade: prioridade.value,
-      data,
+      dataPrevista,
     };
 
     try {
@@ -117,10 +118,9 @@ export default function NestedModal() {
           />
           <TextField
             id="date"
-            label="Data"
-            type="date"
+            label="Data prevista"
             sx={{ mb: 2 }}
-            value={data}
+            value={dataPrevista}
             onChange={(e) => setData(e.target.value)}
             InputLabelProps={{
               shrink: true,
