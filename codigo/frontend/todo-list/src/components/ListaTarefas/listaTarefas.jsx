@@ -1,25 +1,31 @@
-import * as React from 'react';
-import { DataGrid } from '@mui/x-data-grid';
-import { useEffect, useState } from 'react';
-import { getTodos, createTodo, updateTodo, deleteTodo } from '../../service/TarefasService';
-import DeleteIcon from '@mui/icons-material/Delete';
-import ButtonCreate from '../ButtonCreate/ButtonCreate';
-import Button from '@mui/material/Button';
-import CheckIcon from '@mui/icons-material/Check';
-import ClearIcon from '@mui/icons-material/Clear'; // Ícone para tarefa não realizada
+import * as React from "react";
+import { DataGrid } from "@mui/x-data-grid";
+import { useEffect, useState } from "react";
+import {
+  getTodos,
+  updateTodo,
+  deleteTodo,
+} from "../../service/TarefasService";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ButtonCreate from "../ButtonCreate/ButtonCreate";
+import Button from "@mui/material/Button";
+import CheckIcon from "@mui/icons-material/Check";
+import ClearIcon from "@mui/icons-material/Clear"; // Ícone para tarefa não realizada
 
 export default function DataTable() {
   const [lista, setLista] = useState([]);
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'nome', headerName: 'Tarefas', width: 200 },
-    { field: 'descricao', headerName: 'Descrição', width: 200 },
-    { field: 'dataPrevista', headerName: 'Data', width: 200 },
+    { field: "id", headerName: "ID", width: 70 },
+    { field: "nome", headerName: "Tarefas", width: 200 },
+    { field: "descricao", headerName: "Descrição", width: 200 },
+    { field: "dataPrevista", headerName: "Data", width: 200 },
+    { field: "prioridade", headerName: "Prioridade", width: 200 },
+    { field: "realizado", headerName: "Realizado", width: 200 },
     {
-      field: 'actions',
-      headerName: 'Ações',
-      description: 'Ações para o Todo',
+      field: "actions",
+      headerName: "Ações",
+      description: "Ações para o Todo",
       sortable: false,
       width: 400,
       renderCell: (params) => (
@@ -27,14 +33,12 @@ export default function DataTable() {
           <Button
             onClick={() => handleDelete(params.row.id)}
             style={{ marginRight: 16 }}
-            color='error'
+            color="error"
           >
             <DeleteIcon />
           </Button>
-          <Button
-            onClick={() => handleUpdate(params.row)}
-          >
-            {params.row.completed ? "Marcar como não feito" : "Marcar como feito"}
+          <Button onClick={() => handleUpdate(params.row)}>
+            {params.row.false ? "Marcar como não feito" : "Marcar como feito"}
           </Button>
         </>
       ),
@@ -44,13 +48,13 @@ export default function DataTable() {
   const fetchData = async () => {
     try {
       const response = await getTodos();
-      const updatedData = response.map(todo => ({
+      const updatedData = response.map((todo) => ({
         ...todo,
-        completed: todo.completed ? <CheckIcon /> : <ClearIcon />
+        completed: todo.completed ? <CheckIcon /> : <ClearIcon />,
       }));
       setLista(updatedData);
     } catch (error) {
-      console.error('Erro ao buscar os todos:', error);
+      console.error("Erro ao buscar os todos:", error);
     }
   };
 
@@ -63,7 +67,7 @@ export default function DataTable() {
       await deleteTodo(id);
       fetchData(); // Refresh the data after deletion
     } catch (error) {
-      console.error('Erro ao deletar o todo:', error);
+      console.error("Erro ao deletar o todo:", error);
     }
   };
 
@@ -73,13 +77,20 @@ export default function DataTable() {
       await updateTodo(updatedTodo);
       fetchData(); // Refresh the data after update
     } catch (error) {
-      console.error('Erro ao atualizar o todo:', error);
+      console.error("Erro ao atualizar o todo:", error);
     }
   };
 
   return (
-    <div style={{ height: '60vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <div style={{ height: 400, width: '%' }}>
+    <div
+      style={{
+        height: "60vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div style={{ height: 400, width: "%" }}>
         <ButtonCreate />
         <DataGrid
           rows={lista}
